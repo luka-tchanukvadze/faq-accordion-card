@@ -1,0 +1,103 @@
+
+
+body{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: hsl(273, 75%, 66%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+  display: inline-block;
+}
+
+
+
+.container{
+  display: grid;
+  grid-template-columns: 17rem 25rem;
+  gap: 5rem;
+  align-items: center;
+  background-color: white;
+  padding: 2rem 0;
+  border-radius: 1rem;
+  padding-bottom: 4rem;
+}
+
+
+.left{
+  position: relative;
+}
+.woman-img{
+  overflow: hidden;
+}
+.box-img{
+  position: absolute; 
+  top: 5.5rem;
+  left: -4.3rem;
+  z-index: 1;
+}
+
+.box{
+  width: 9rem;
+}
+.woman{
+  width: 20rem;
+  transform: translateX(-3rem);
+  
+}
+
+
+.pattern{
+  width: 20rem;
+  transform: translate(-5rem, 4rem);
+  position: absolute; 
+  top: -5rem;
+  left: 2rem;
+  z-index: 3;
+}
+
+.title{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text{
+  color: hsl(240, 6%, 50%);
+  
+}
+
+.text:hover{
+  cursor: pointer;
+  color: hsl(14, 88%, 65%);
+}
+
+.for-flex{
+  display: flex;
+  flex-direction: column;
+  width: 21rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: .05rem solid hsl(240, 6%, 50%);
+}
+
+.to-add-text{
+  display: flex;
+  width: 21rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.arrow{
+  cursor: pointer;
+  transform: translateX(-.5rem);
+}
+
+.div-text{
+  font-size: .7rem;
+  color: gray;
+  font-weight: 400;
+  padding-bottom: 1rem;
+}
