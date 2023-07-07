@@ -48,77 +48,48 @@ function myFunction(x){
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded event fired');
-  const arrow1 = document.querySelector('.arrow1')
-  const arrow2 = document.querySelector('.arrow2')
-  const arrow3 = document.querySelector('.arrow3')
-  const arrow4 = document.querySelector('.arrow4')
-  const arrow5 = document.querySelector('.arrow5')
-  let isTextAdded1 = false
-  let isTextAdded2= false
-  let isTextAdded3 = false
-  let isTextAdded4 = false
-  let isTextAdded5 = false
 
-  let originalStyle = null
-  
+  let originalStyle = null;
 
-  function addText(className, text){
+  function addText(className, text) {
     console.log('addText called with className:', className);
-    let shortcut = document.querySelector(`.${className}`)
-    // let divContainer = shortcut.nextElementSibling
-    let divContainer = shortcut.parentElement.nextElementSibling;
+    let shortcut = document.querySelector(`.${className}`);
+    let divContainer = shortcut.closest('.for-flex');
 
-    if (shortcut.classList.contains('div-text')) {
-      return
-    } else{
-      let divText = document.createElement('div')
-      divText.setAttribute('class', 'div-text')
-      divText.textContent = text
-    
-      shortcut.appendChild(divText)
-      if (className === 'num1') {
-        isTextAdded1 = true
-      } else if (className === 'num2') {
-        isTextAdded2 = true
-      } else if (className === 'num3') {
-        isTextAdded3 = true
-      } else if (className === 'num4') {
-        isTextAdded4 = true
-      } else if (className === 'num5') {
-        isTextAdded5 = true
-      }
+    if (divContainer && !divContainer.classList.contains('div-text')) {
+      let divText = document.createElement('div');
+      divText.setAttribute('class', 'div-text');
+      divText.textContent = text;
+      divContainer.appendChild(divText);
     }
-    
   }
 
   function removeText(className) {
     console.log('removeText called with className:', className);
     let shortcut = document.querySelector(`.${className}`);
-    let divContainer = shortcut.nextElementSibling;
-  
+    let divContainer = shortcut.closest('.for-flex');
+
     if (divContainer && divContainer.classList.contains('div-text')) {
       let divText = divContainer.querySelector('.div-text');
-  
+
       if (divText) {
-        shortcut.removeChild(divText);
-      }
-  
-      if (className === 'num1') {
-        isTextAdded1 = false;
-      } else if (className === 'num2') {
-        isTextAdded2 = false;
-      } else if (className === 'num3') {
-        isTextAdded3 = false;
-      } else if (className === 'num4') {
-        isTextAdded4 = false;
-      } else if (className === 'num5') {
-        isTextAdded5 = false;
+        divContainer.removeChild(divText);
       }
     }
   }
-  
-  
-  
+
+  const arrow1 = document.querySelector('.arrow1');
+  const arrow2 = document.querySelector('.arrow2');
+  const arrow3 = document.querySelector('.arrow3');
+  const arrow4 = document.querySelector('.arrow4');
+  const arrow5 = document.querySelector('.arrow5');
+
+  let isTextAdded1 = false;
+  let isTextAdded2 = false;
+  let isTextAdded3 = false;
+  let isTextAdded4 = false;
+  let isTextAdded5 = false;
+
   arrow1.addEventListener('click', () => {
     if (isTextAdded1) {
       removeText('num1');
@@ -127,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     isTextAdded1 = !isTextAdded1;
   });
-  
+
   arrow2.addEventListener('click', () => {
     if (isTextAdded2) {
       removeText('num2');
@@ -136,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     isTextAdded2 = !isTextAdded2;
   });
-  
+
   arrow3.addEventListener('click', () => {
     if (isTextAdded3) {
       removeText('num3');
@@ -145,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     isTextAdded3 = !isTextAdded3;
   });
-  
+
   arrow4.addEventListener('click', () => {
     if (isTextAdded4) {
       removeText('num4');
@@ -154,20 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     isTextAdded4 = !isTextAdded4;
   });
-  
+
   arrow5.addEventListener('click', () => {
     if (isTextAdded5) {
-      removeText('num5');
+ removeText('num5');
     } else {
       addText('num5', 'Chat and email support is available 24/7. Phone lines are open during normal business hours.');
     }
     isTextAdded5 = !isTextAdded5;
   });
-  
-})
-
-
-
-
-
-
+});
